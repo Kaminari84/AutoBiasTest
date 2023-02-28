@@ -23,7 +23,7 @@ The tested model accepts paths from HuggingFace Transformer library, examples: *
 
 ## File Descriptions
 + **_1_gen2csv.py** - converts json generation exports (*./gen_json*) into csv exports (*./gen_csv*). This is useful for for manual labeling of sentences with issues or sentence quality inspection.
-+ **_2_csv2pairs.py** - converts csv sentences (*./gen_csv*) into *stereotype/anti-stereotype pairs* (*./gen_pairs_csv*) needed for applying the Stereotype Score from[Nadeem'20](https://arxiv.org/abs/2004.09456)
++ **_2_csv2pairs.py** - converts csv sentences (*./gen_csv*) into *stereotype/anti-stereotype pairs* (*./gen_pairs_csv*) needed for applying the Stereotype Score from [Nadeem'20](https://arxiv.org/abs/2004.09456)
 + **_3_ss_test.py** - calculates the Steretype Score as a proportion of steteoryped choices based on templates with to alternatives as in *./gen_pairs_csv*. The score is exported into json format (*./ss_gen_test*). For each tested model name a new directory is created.
 + **bias_specs_with_glove_and_thesaurus.json** - bias specification JSON containg individual biases defined by social group and attribute terms. Templates are from prior work and replaced by our generations in AutoBiasTest. Additional social grup terms ("social_groups_glove", "social_groups_thesaurus') and attribute terms ("attributes_glove", "attributes_thesaurus") are semantically similar terms generated using Glove embeddings and Merridiam-Webster Thesaurus respectively. These are used for robustness testing.
 + **process_stereoset.py** - script that load a *"stereoset_dev.json"* and formats it into CSV pairs format (*"stereo_dev.csv"*) that can be used for calculating Stereotype Score by passing the generated csv to **_3_ss_test.py** 
