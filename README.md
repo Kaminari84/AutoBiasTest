@@ -1,25 +1,36 @@
 # AutoBiasTest
 Repository for AutoBiasTest framework
 
-If you have templates in paired format (check *./gen_pairs_csv" for format) and you test Social Bias using Sterotype Score from [Nadeem'20](https://arxiv.org/abs/2004.09456) (stereotype/anti-stereotype pairs), you can start from **Step 3**
+## Processing and Testing on Custom Generations
+If you have templates in paired format (check *"./gen_pairs_csv"* for format) and you test Social Bias using Sterotype Score from [Nadeem'20](https://arxiv.org/abs/2004.09456) (stereotype/anti-stereotype pairs), you can start from **Step 3**
 
 Starting from generations in JSON format in **./gen_json**
-### Step 1: Turn JSON generations into CSV for editing discarded sentences
+#### Step 1: Turn JSON generations into CSV for editing discarded sentences
 ```
  python3 _1_gen2csv.py --source_path ./gen_json --out_path ./gen_csv
 ```
 
-### Step 2: Turn CSV templates into stereotype/anti-stereotype pairs
+#### Step 2: Turn CSV templates into stereotype/anti-stereotype pairs
 ```
  python3 _2_csv2pairs.py --source_path ./gen_csv --bias_spec_json bias_specs_with_glove_and_thesaurus.json --out_path ./gen_pairs_csv
 ```
 
-### Step 3: Test Social Bias on given **Tested Model** using Stereotype Score metric from [Nadeem'20](https://arxiv.org/abs/2004.09456)
+#### Step 3: Test Social Bias on given **Tested Model** using Stereotype Score metric from [Nadeem'20](https://arxiv.org/abs/2004.09456)
 The tested model accepts paths from HuggingFace Transformer library, examples: *"bert-base-uncased", "bert-large-uncased", "gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl"*
 ```
  python3 _3_ss_test.py --gen_pairs_path ./gen_pairs_csv --bias_spec_json bias_specs_with_glove_and_thesaurus.json --tested_model  "bert-base-uncased" --out_path ./ss_gen_test      
 ```
+## Processing and Testing on StereoSet Development Set (crowd-sourced dataset)
+StereoSet Development dataset from is [Nadeem'20](https://arxiv.org/abs/2004.09456) is in *"stereo_dev.json"* in JSON format.
 
+#### Step 1: Turn JSON templates into CSV into stereotype/anti-stereotype pairs
+```
+ python3 process_stereoset.py --stereo_set_path ./stereo_dev.csv --out_path ./stereo_dev.json
+```
+#### Step 2: Test Social Bias on given **Tested Model** using Stereotype Score metric from [Nadeem'20](https://arxiv.org/abs/2004.09456)
+```
+ python3 _3_ss_test.py --gen_pairs_path ./ --tested_model  "bert-base-uncased" --out_path ./ss_stereoset_test
+```
 
 ## File Descriptions
 + **_1_gen2csv.py** - converts json generation exports (*./gen_json*) into csv exports (*./gen_csv*). This is useful for for manual labeling of sentences with issues or sentence quality inspection.
