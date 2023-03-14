@@ -5,7 +5,7 @@ Repository for AutoBiasTest framework
 If you have templates in paired format (check *"./gen_pairs_csv"* for format) and you test Social Bias using Sterotype Score from [Nadeem'20](https://arxiv.org/abs/2004.09456) (stereotype/anti-stereotype pairs), you can start from **Step 3**
 
 Starting from generations in JSON format in **./gen_json**
-#### Step 1: Turn JSON generations into CSV for editing discarded sentences
+#### Step 1: Turn JSON generations into CSV for potential inspection of generated sentences
 ```
  python3 _1_gen2csv.py --source_path ./gen_json --out_path ./gen_csv
 ```
