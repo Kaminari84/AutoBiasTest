@@ -25,12 +25,101 @@ StereoSet Development dataset from is [Nadeem'20](https://arxiv.org/abs/2004.094
 
 #### Step 1: Turn JSON templates into CSV into stereotype/anti-stereotype pairs
 ```
- python3 process_stereoset.py --stereo_set_path ./stereo_dev.csv --out_path ./stereo_dev.json
+ python3 process_stereoset.py --stereoset_path ./stereo_dev.json --out_path ./
 ```
 #### Step 2: Test Social Bias on given **Tested Model** using Stereotype Score metric from [Nadeem'20](https://arxiv.org/abs/2004.09456)
 ```
  python3 _3_ss_test.py --gen_pairs_path ./ --tested_model  "bert-base-uncased" --out_path ./stereoset_ss_test
 ```
+### Social Bias Scores
+
+<table>
+  <tr>
+    <th rowspan="2">Tested Model</td>
+    <th colspan="2">Overall</td>
+    <th colspan="2">Profession</td>
+    <th colspan="2">Race</td>
+    <th colspan="2">Gender</td>
+    <th colspan="2">Religion</td>
+  </tr>
+  <tr>
+    <th>Ours</td>
+    <th>Nadeem</td>
+    <th>Ours</td>
+    <th>Nadeem</td>
+    <th>Ours</td>
+    <th>Nadeem</td>
+    <th>Ours</td>
+    <th>Nadeem</td>
+    <th>Ours</td>
+    <th>Nadeem</td>
+  </tr>
+  <tr>
+    <td>bert-base-uncased</td>
+    <td>58.12</td>
+    <td>58.68</td>
+    <td>60.33</td>
+    <td>60.85</td>
+    <td>54.52</td>
+    <td>56.30</td>
+    <td>63.70</td>
+    <td>61.48</td>
+    <td>60.46</td>
+    <td>56.28</td>
+  </tr>
+  <tr>
+    <td>bert-large-uncased</td>
+    <td>60.18</td>
+    <td>59.01</td>
+    <td>61.32</td>
+    <td>60.30</td>
+    <td>57.69</td>
+    <td>57.27</td>
+    <td>65.03</td>
+    <td>64.04</td>
+    <td>62.57</td>
+    <td>50.16</td>
+  </tr>
+  <tr>
+    <td>gpt2</td>
+    <td>62.71</td>
+    <td>61.93</td>
+    <td>64.21</td>
+    <td>63.97</td>
+    <td>61.88</td>
+    <td>60.35</td>
+    <td>61.79</td>
+    <td>62.67</td>
+    <td>60.69</td>
+    <td>58.02</td>
+  </tr>
+  <tr>
+    <td>gpt2-medium</td>
+    <td>63.70</td>
+    <td>62.74</td>
+    <td>64.57</td>
+    <td>63.37</td>
+    <td>62.35</td>
+    <td>61.44</td>
+    <td>67.48</td>
+    <td>65.58</td>
+    <td>58.76</td>
+    <td>62.57</td>
+  </tr>
+  <tr>
+    <td>gpt2-large</td>
+    <td>64.11</td>
+    <td>64.26</td>
+    <td>65.15</td>
+    <td>65.68</td>
+    <td>63.21</td>
+    <td>63.00</td>
+    <td>64.75</td>
+    <td>65.29</td>
+    <td>62.39</td>
+    <td>61.61</td>
+  </tr>
+</table>
 
 ## File Descriptions
 + **_1_gen2csv.py** - converts json generation exports (*./gen_json*) into csv exports (*./gen_csv*). This is useful for for manual labeling of sentences with issues or sentence quality inspection.
