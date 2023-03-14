@@ -18,7 +18,7 @@ Starting from generations in JSON format in **./gen_json**
 #### Step 3: Test Social Bias on given **Tested Model** using Stereotype Score metric from [Nadeem'20](https://arxiv.org/abs/2004.09456)
 The tested model accepts paths from HuggingFace Transformer library, examples: *"bert-base-uncased", "bert-large-uncased", "gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl"*
 ```
- python3 _3_ss_test.py --gen_pairs_path ./gen_pairs_csv --bias_spec_json bias_specs_with_glove_and_thesaurus.json --tested_model  "bert-base-uncased" --out_path ./ss_gen_test      
+ python3 _3_ss_test.py --gen_pairs_path ./gen_pairs_csv --tested_model  "bert-base-uncased" --out_path ./ss_gen_test      
 ```
 ## Processing and Testing on StereoSet Development Set (crowd-sourced dataset)
 StereoSet Development dataset from is [Nadeem'20](https://arxiv.org/abs/2004.09456) is in *"stereo_dev.json"* in JSON format.
