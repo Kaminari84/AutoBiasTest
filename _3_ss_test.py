@@ -111,10 +111,7 @@ def checkBias(row, biasProbFunc, model, tokenizer, device):
           "bottom_logit": test_res[bottom_term_idx]})
 
 def testBiasOnPairs(source_path, dest_path, model_name, model, tokenizer, device):
-  # go over all generations
-  nf=0
-  
-  #for generations
+  # go over all csv file in folder
   gen_files = glob(os.path.join(source_path, "*.csv"))
   for gen_file in gen_files:
     # Create directory per tested model
@@ -181,7 +178,6 @@ def testBiasOnPairs(source_path, dest_path, model_name, model, tokenizer, device
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Process some arguments')
   parser.add_argument('--gen_pairs_path', type=str, required=True, help="Source path with stereotype-antistereotype pairs in CSV format (use csv2pairs.py first)")
-  parser.add_argument('--bias_spec_json', type=str, required=True, help="bias specification, needed to")
   parser.add_argument('--tested_model', type=str, required=True, help="name of the tested model - HuggingFace path, e.g., bert-base-uncased")
   parser.add_argument('--out_path', type=str, required=True, help="Outpur directory to save csv sentence pairs into")
 
