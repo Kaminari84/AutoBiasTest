@@ -59,8 +59,8 @@ def loadSteretSet(file_path):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Process some arguments')
-  parser.add_argument('--stereo_set_path', type=str, required=True, help="Source path to the json stereoset file")
-  parser.add_argument('--out_path', type=str, required=True, help="Outpur directory to save csv sentence pairs into")
+  parser.add_argument('--stereoset_path', type=str, required=True, help="Source path to the json stereoset file")
+  parser.add_argument('--out_path', type=str, required=True, help="Output directory to save csv sentence pairs into")
 
   args = parser.parse_args()
   print("Args:", args)
@@ -69,11 +69,11 @@ if __name__ == '__main__':
   all_cats = list(range(10))[1:]
   all_cats.append('A')
 
-  stereo_df = loadSteretSet(args.stereo_set_path) 
+  stereo_df = loadSteretSet(args.stereoset_path) 
   stereo_df['discarded'] = ''
   stereo_df['discard_cats'] = ''
   for cat in all_cats:
     stereo_df[cat] = 0
   display(stereo_df.head(5))
 
-  stereo_df.to_csv(os.path.join(args.out_path, os.path.basename(args.stereo_set_path).replace(".json",".csv")))
+  stereo_df.to_csv(os.path.join(args.out_path, os.path.basename(args.stereoset_path).replace(".json",".csv")))
