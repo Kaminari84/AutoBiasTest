@@ -1,5 +1,5 @@
 # AutoBiasTest
-Repository for AutoBiasTest framework
+Repository for [AutoBiasTest framework](https://arxiv.org/pdf/2302.07371.pdf)
 
 ## Processing and Testing on Custom Generations
 If you have templates in paired format (check *"./gen_pairs_csv"* for format) and you test Social Bias using Sterotype Score from [Nadeem'20](https://arxiv.org/abs/2004.09456) (stereotype/anti-stereotype pairs), you can start from **Step 3**
